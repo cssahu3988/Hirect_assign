@@ -5,8 +5,10 @@
       <map>
         <entry key="..\:/Users/cssah/AndroidStudioProjects/Hirect_assign/app/src/main/res/drawable/rounded_background.xml" value="0.2455" />
         <entry key="..\:/Users/cssah/AndroidStudioProjects/Hirect_assign/app/src/main/res/drawable/rounded_background_white.xml" value="0.2455" />
-        <entry key="..\:/Users/cssah/AndroidStudioProjects/Hirect_assign/app/src/main/res/layout/activity_main.xml" value="0.2" />
+        <entry key="..\:/Users/cssah/AndroidStudioProjects/Hirect_assign/app/src/main/res/layout/activity_main.xml" value="0.264" />
         <entry key="..\:/Users/cssah/AndroidStudioProjects/Hirect_assign/app/src/main/res/layout/crpto_item.xml" value="0.264" />
+        <entry key="..\:/Users/cssah/AndroidStudioProjects/Hirect_assign/app/src/main/res/layout/fragment_1.xml" value="0.25" />
+        <entry key="..\:/Users/cssah/AndroidStudioProjects/Hirect_assign/app/src/main/res/layout/fragment_2.xml" value="0.25" />
         <entry key="..\:/Users/cssah/AndroidStudioProjects/Hirect_assign/app/src/main/res/menu/bottom_nav_menu.xml" value="0.1" />
       </map>
     </option>

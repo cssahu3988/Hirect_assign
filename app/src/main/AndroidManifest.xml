@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.hirect_assign">
+    package="com.example.hirect_assign"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <application
         android:allowBackup="true"
@@ -8,7 +9,8 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.Hirect_assign">
+        android:theme="@style/Theme.Hirect_assign"
+        tools:node="replace">
         <activity
             android:name=".MainActivity"
             android:exported="true">
