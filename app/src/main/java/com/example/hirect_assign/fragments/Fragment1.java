@@ -1,5 +1,7 @@
 package com.example.hirect_assign.fragments;
 
+import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -17,10 +19,13 @@ import com.example.hirect_assign.R;
 import com.example.hirect_assign.databinding.CrptoItemBinding;
 import com.example.hirect_assign.databinding.Fragment1Binding;
 import com.example.hirect_assign.pojo.Model1;
+import com.example.hirect_assign.ui.CryptoDetailsActivity;
+import com.example.hirect_assign.ui.PaymentActivity;
+import com.google.gson.Gson;
 
 import java.util.ArrayList;
 
-public class Fragment1 extends Fragment {
+public class Fragment1 extends Fragment implements View.OnClickListener {
     private Fragment1Binding binding;
     private ArrayList<Model1> list = new ArrayList<>();
     @Override
@@ -33,7 +38,13 @@ public class Fragment1 extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         binding = DataBindingUtil.inflate(inflater,R.layout.fragment_1,container,false);
         SetUpRecyclerView();
+        ClickListeners();
         return binding.getRoot();
+    }
+
+    private void ClickListeners() {
+        binding.invest.setOnClickListener(this);
+        binding.withdraw.setOnClickListener(this);
     }
 
     private void LoadData() {
@@ -71,6 +82,22 @@ public class Fragment1 extends Fragment {
         adapter.notifyDataSetChanged();
     }
 
+    @SuppressLint("NonConstantResourceId")
+    @Override
+    public void onClick(View view) {
+        switch (view.getId()){
+            case R.id.invest:
+            case R.id.withdraw:
+                OpenPaymentActivity();
+                break;
+        }
+    }
+
+    private void OpenPaymentActivity() {
+        Intent intent = new Intent(getActivity(), PaymentActivity.class);
+        startActivity(intent);
+    }
+
     private class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder>{
 
         @NonNull
@@ -81,8 +108,16 @@ public class Fragment1 extends Fragment {
         }
 
         @Override
-        public void onBindViewHolder(@NonNull MyAdapter.ViewHolder holder, int position) {
+        public void onBindViewHolder(@NonNull MyAdapter.ViewHolder holder, @SuppressLint("RecyclerView") int position) {
             holder.binding.setModel(list.get(position));
+            holder.binding.r1.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent i = new Intent(getActivity(), CryptoDetailsActivity.class);
+                    i.putExtra("e",position);
+                    startActivity(i);
+                }
+            });
         }
 
         @Override

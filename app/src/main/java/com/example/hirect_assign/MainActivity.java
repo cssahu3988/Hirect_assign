@@ -2,6 +2,7 @@ package com.example.hirect_assign;
 
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -16,7 +17,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.util.ArrayList;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     private ActivityMainBinding binding;
     private ArrayList<Model1> list = new ArrayList<>();
     private FragmentTransaction transaction;
@@ -64,5 +65,10 @@ public class MainActivity extends AppCompatActivity {
             fragment2 = new Fragment2();
         }
         return fragment2;
+    }
+
+    @Override
+    public void onClick(View view) {
+
     }
 }

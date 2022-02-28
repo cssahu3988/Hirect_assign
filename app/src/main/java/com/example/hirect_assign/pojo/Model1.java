@@ -3,7 +3,9 @@ package com.example.hirect_assign.pojo;
 import android.graphics.Bitmap;
 import android.graphics.drawable.Drawable;
 
-public class Model1 {
+import java.io.Serializable;
+
+public class Model1 implements Serializable {
     private String name, percentage, price, amount, colors;
     private Drawable cryptoImage, lines, area, background;
     private int color;

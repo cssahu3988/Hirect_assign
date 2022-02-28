@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.hirect_assign"
-    xmlns:tools="http://schemas.android.com/tools">
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.example.hirect_assign">
 
     <application
         android:allowBackup="true"
@@ -10,7 +10,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Hirect_assign"
-        tools:node="replace">
+        tools:node="merge">
+        <activity
+            android:name=".ui.CryptoDetailsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.PaymentActivity"
+            android:exported="false" />
         <activity
             android:name=".MainActivity"
             android:exported="true">

@@ -17,10 +17,19 @@ import com.example.hirect_assign.R;
 import com.example.hirect_assign.databinding.CrptoItemBinding;
 import com.example.hirect_assign.databinding.Fragment2Binding;
 import com.example.hirect_assign.pojo.Model1;
+import com.github.mikephil.charting.charts.PieChart;
+import com.github.mikephil.charting.data.Entry;
+import com.github.mikephil.charting.data.PieData;
+import com.github.mikephil.charting.data.PieDataSet;
+import com.github.mikephil.charting.data.PieEntry;
+import com.github.mikephil.charting.highlight.Highlight;
+import com.github.mikephil.charting.listener.OnChartValueSelectedListener;
+import com.github.mikephil.charting.utils.ColorTemplate;
 
 import java.util.ArrayList;
+import java.util.List;
 
-public class Fragment2 extends Fragment {
+public class Fragment2 extends Fragment implements OnChartValueSelectedListener {
 
     private Fragment2Binding binding;
     private ArrayList<Model1>list = new ArrayList<>();
@@ -33,8 +42,53 @@ public class Fragment2 extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_2,container,false);
+        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_2, container, false);
+        SetUpRecyclerView();
+        SetUpGraph();
+        return binding.getRoot();
     }
+
+    private void SetUpGraph() {
+        PieChart chart = binding.chart1;
+        chart.setUsePercentValues(true);
+
+
+        List <PieEntry>NoOfEmp = new ArrayList();
+
+        NoOfEmp.add(new PieEntry(0.6f, "BTC"));
+        NoOfEmp.add(new PieEntry(0.4f, "ETH"));
+        ;
+        PieDataSet dataSet = new PieDataSet(NoOfEmp, "");
+
+        ArrayList<Integer> colors = new ArrayList<>();
+
+        for (int c : ColorTemplate.VORDIPLOM_COLORS)
+            colors.add(c);
+
+        for (int c : ColorTemplate.JOYFUL_COLORS)
+            colors.add(c);
+
+        for (int c : ColorTemplate.COLORFUL_COLORS)
+            colors.add(c);
+
+        for (int c : ColorTemplate.LIBERTY_COLORS)
+            colors.add(c);
+
+        for (int c : ColorTemplate.PASTEL_COLORS)
+            colors.add(c);
+
+        colors.add(ColorTemplate.getHoloBlue());
+
+        dataSet.setColors(colors);
+
+        PieData data = new PieData(dataSet);
+        chart.setData(data);
+        dataSet.setColors(ColorTemplate.COLORFUL_COLORS);
+        chart.animateXY(500, 500);
+        chart.highlightValue(null);
+        chart.invalidate();
+    }
+
 
 
     private void LoadData() {
@@ -70,6 +124,17 @@ public class Fragment2 extends Fragment {
         MyAdapter adapter = new MyAdapter();
         binding.recyclerView.setAdapter(adapter);
         adapter.notifyDataSetChanged();
+    }
+
+
+    @Override
+    public void onValueSelected(Entry e, Highlight h) {
+
+    }
+
+    @Override
+    public void onNothingSelected() {
+
     }
 
     private class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder>{
